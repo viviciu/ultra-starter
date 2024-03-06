@@ -4,7 +4,7 @@ export const introAnimation = (wordGroupRef) => {
     const tl = gsap.timeline();
     
     tl.to(wordGroupRef.current, {
-      y: -160,
+      yPercent: -80,
       duration: 5,
       ease: "expo.inOut"
     });
