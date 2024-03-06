@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 
 
 import styles from "./Loader.module.scss";
-import { introAnimation, progressAnimation } from "./anim.js";
+import { collapseWords, introAnimation, progressAnimation } from "./anim.js";
 
 const Loader = ({timeline}) => {
 
@@ -17,16 +17,17 @@ const Loader = ({timeline}) => {
     timeline &&
     timeline
       .add(introAnimation(wordGroupRef))
-      .add(progressAnimation(progressRef, progressNumberRef));
-  }, []);
+      .add(progressAnimation(progressRef, progressNumberRef), 0) // 0 is the position of the animation in the timeline. So it starts when the prev. .add begins, but the next .add happens after.
+      .add(collapseWords(loaderRef), "-=1"); // 1 second before the previous animation ends.
+  }, [timeline]);
 
   return (
-    <div className={styles.loader__wrapper} ref={loaderRef}>
+    <div className={styles.loader__wrapper}>
       <div className={styles.loader__progressWrapper}>
         <div className={styles.loader__progress} ref={progressRef}></div>
         <span className={styles.loader__progressNumber} ref={progressNumberRef}>0</span>
       </div>
-      <div className={styles.loader}>
+      <div className={styles.loader} ref={loaderRef}>
         <div className={styles.loader__words}>
           <div className={styles.loader__overlay}></div>
           <div className={styles.loader__wordsGroup} ref={wordGroupRef}>
