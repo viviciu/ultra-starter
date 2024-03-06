@@ -5,6 +5,8 @@ import Hero from "@/components/Hero";
 import { useLayoutEffect, useState } from "react";
 import { gsap } from "gsap";
 
+
+
 const Home = () => {
   const [loaderFinished, setLoaderFinished] = useState(false);
   const [timeline, setTimeline] = useState(null);

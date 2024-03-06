@@ -1,12 +1,10 @@
 @font-face {
   font-family: "Fomular";
-  src: url('public/fonts/Formular.ttf') format('truetype');
+  src: url('/fonts/Formular.ttf') format('truetype');
 }
 
 
 .loader {
-  //font
-  font-family: "Formular";
   // clip path referenced in /anim.js
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 
@@ -48,6 +46,8 @@
   &__word {
     display: block;
     font-size: 3.2rem;
+    font-family: "Formular";
+    font: "Formular";
   }
 
   &__progressWrapper {
