@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { useGLTF, Float, Lightformer, Text, Html, ContactShadows, Environment, MeshTransmissionMaterial } from "@react-three/drei";
+import { EffectComposer, N8AO, TiltShift2 } from "@react-three/postprocessing";
 import { words } from "./data";
 import { gsap } from "gsap";
 import { useControls } from "leva";
@@ -8,6 +9,7 @@ import * as THREE from "three";
 
 import styles from "./Loader.module.scss";
 import { collapseWords, introAnimation, progressAnimation } from "./anim.js";
+
 
 const Loader = ({ timeline }) => {
   const loaderRef = useRef(null);
@@ -30,24 +32,24 @@ const Loader = ({ timeline }) => {
     const config = useControls({
       meshPhysicalMaterial: false,
       transmissionSampler: false,
-      backside: false,
+      backside: true,
       samples: { value: 16, min: 1, max: 32, step: 1 },
       resolution: { value: 2048, min: 256, max: 2048, step: 256 },
       transmission: { value: 1.0, min: 0, max: 1 },
-      roughness: { value: 0.28, min: 0, max: 1, step: 0.01 },
-      thickness: { value: 0.53, min: 0, max: 10, step: 0.01 },
-      ior: { value: 1.74, min: 1, max: 5, step: 0.01 },
-      chromaticAberration: { value: 0.0, min: 0, max: 1 },
+      roughness: { value: 0.19, min: 0, max: 1, step: 0.01 },
+      thickness: { value: 5.95, min: 0, max: 10, step: 0.01 },
+      ior: { value: 1.15, min: 1, max: 5, step: 0.01 },
+      chromaticAberration: { value: 0.39, min: 0, max: 1 },
       anisotropy: { value: 0.03, min: 0, max: 1, step: 0.01 },
       anisotropicBlur: { value: 0.88, min: 0, max: 1, step: 0.01 },
-      distortion: { value: 0.42, min: 0, max: 1, step: 0.01 },
-      distortionScale: { value: 0.3, min: 0.01, max: 1, step: 0.01 },
-      temporalDistortion: { value: 0.06, min: 0, max: 1, step: 0.01 },
-      clearcoat: { value: 0.48, min: 0, max: 1 },
-      attenuationDistance: { value: 3.24, min: 0, max: 10, step: 0.01 },
+      distortion: { value: 0.18, min: 0, max: 1, step: 0.01 },
+      distortionScale: { value: 0.4, min: 0.01, max: 1, step: 0.01 },
+      temporalDistortion: { value: 0.1, min: 0, max: 1, step: 0.01 },
+      clearcoat: { value: 0.26, min: 0, max: 1 },
+      attenuationDistance: { value: 1.6, min: 0, max: 10, step: 0.01 },
       attenuationColor: "#ffffff",
-      color: "#b3cfff",
-      bg: "#ffffff",
+      color: "#8f8f8f",
+      bg: "#ffffff", 
     });
 
 
@@ -131,7 +133,10 @@ const Loader = ({ timeline }) => {
           // the same source. By re-connecting the canvas to a parent that contains the
           // text content as well as the canvas we do just that.
         >
-          <ambientLight intensity={0.5} />
+          
+          <color attach="background" args={["#e0e0e0"]} />
+          <spotLight position={[20, 20, 10]} penumbra={1} castShadow angle={0.2} />
+          {/* <ambientLight intensity={0.5} />
           <directionalLight
             position={[10, 10, 10]}
             angle={0.15}
@@ -139,10 +144,11 @@ const Loader = ({ timeline }) => {
             castShadow
             shadow-mapSize={[2024, 2024]}
           />
-          <pointLight position={[10, 0, 0]} />
-          <Box position={[1.2, 0, 0]} />
+          <pointLight position={[10, 0, 0]} /> */}
+          <Box position={[0, 0, 0]} />
           {/* <Shadows position={[0, 0, -0.5]} /> */}
-          <Environment resolution={256}>
+          <ContactShadows scale={100} position={[0, -7.5, 0]} blur={1} far={100} opacity={0.85} />
+          <Environment resolution={256} preset="city">
             <group rotation={[-Math.PI / 3, 0, 1]}>
               <Lightformer form="circle" intensity={100} rotation-x={Math.PI / 2} position={[0, 5, -9]} scale={2} />
               <Lightformer form="circle" intensity={2} rotation-y={Math.PI / 2} position={[-5, 1, -1]} scale={2} />
@@ -151,6 +157,10 @@ const Loader = ({ timeline }) => {
               <Lightformer form="ring" color="#4060ff" intensity={80} onUpdate={(self) => self.lookAt(0, 0, 0)} position={[10, 10, 0]} scale={10} />
             </group>
           </Environment>
+          <EffectComposer disableNormalPass>
+            {/* <N8AO aoRadius={1} intensity={2} /> */}
+            {/* <TiltShift2 blur={0.2} /> */}
+          </EffectComposer>
         </Canvas>
       </div>
     </div>
