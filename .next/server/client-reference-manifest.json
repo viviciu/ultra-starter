@@ -285,15 +285,6 @@
     }
   },
   "entryCSSFiles": {
-    "/Users/vivianastaicu/Documents/GitHub/ultra-starter/app/layout": {
-      "modules": [
-        "/Users/vivianastaicu/Documents/GitHub/ultra-starter/app/globals.css",
-        "/Users/vivianastaicu/Documents/GitHub/ultra-starter/node_modules/next/font/local/target.css?{\"path\":\"app/layout.js\",\"import\":\"\",\"arguments\":[{\"src\":\"../public/fonts/ppneue.woff2\"}],\"variableName\":\"ppNeue\"}"
-      ],
-      "files": [
-        "static/css/app/layout.css"
-      ]
-    },
     "/Users/vivianastaicu/Documents/GitHub/ultra-starter/app/page": {
       "modules": [
         "/Users/vivianastaicu/Documents/GitHub/ultra-starter/app/components/Logo/Logo.module.css",
@@ -302,6 +293,15 @@
       ],
       "files": [
         "static/css/app/page.css"
+      ]
+    },
+    "/Users/vivianastaicu/Documents/GitHub/ultra-starter/app/layout": {
+      "modules": [
+        "/Users/vivianastaicu/Documents/GitHub/ultra-starter/app/globals.css",
+        "/Users/vivianastaicu/Documents/GitHub/ultra-starter/node_modules/next/font/local/target.css?{\"path\":\"app/layout.js\",\"import\":\"\",\"arguments\":[{\"src\":\"../public/fonts/ppneue.woff2\"}],\"variableName\":\"ppNeue\"}"
+      ],
+      "files": [
+        "static/css/app/layout.css"
       ]
     }
   }

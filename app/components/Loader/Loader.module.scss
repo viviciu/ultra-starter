@@ -15,9 +15,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   overflow: hidden;
   z-index: 2;
+
 
   &__wrapper {
     position: relative;
