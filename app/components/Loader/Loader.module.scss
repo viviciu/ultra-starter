@@ -1,4 +1,12 @@
+@font-face {
+  font-family: "Fomular";
+  src: url('public/fonts/Formular.ttf') format('truetype');
+}
+
+
 .loader {
+  //font
+  font-family: "Formular";
   // clip path referenced in /anim.js
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 
@@ -9,7 +17,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: white;
+  background-color: black;
   overflow: hidden;
   z-index: 2;
 
@@ -25,7 +33,8 @@
   &__words {
     position: relative;
     overflow: hidden;
-    height: 41.8rem;
+    height: 3.5rem;
+    color: white;
   }
 
   &__overlay {
@@ -33,17 +42,7 @@
     inset: 0;
     height: 100%;
     z-index: 2;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.9),
-      rgba(255, 255, 255, 0.9) 47%,
-      transparent,
-      transparent 47%,
-      transparent,
-      transparent 55%,
-      rgba(255, 255, 255, 0.9) 50%,
-      rgba(255, 255, 255, 0.9)
-    );
+    background: transparent;
   }
 
   &__word {
@@ -63,7 +62,7 @@
   &__progress {
     height: 100%;
     width: 100%;
-    background-color: black;
+    background-color: white;
     transform: scaleX(0);
     transform-origin: left center;
   }
@@ -75,7 +74,7 @@
     transform: translateY(-50%);
     z-index: 4;
     white-space: nowrap;
-    color: white;
+    color: black;
     font-size: 3.2rem;
   }
 }

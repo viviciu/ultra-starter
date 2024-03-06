@@ -27,7 +27,8 @@ const Home = () => {
   return (
     <main>
       {/* If loaderFinished = True, we will render hero. */}
-      {loaderFinished ? <Hero /> : <Loader timeline={timeline} />}
+      {/* {loaderFinished ? <Hero /> : <Loader timeline={timeline} />} */}
+      <Loader timeline={timeline} />
     </main>
   );
 };

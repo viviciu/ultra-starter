@@ -18,7 +18,7 @@ const Loader = ({timeline}) => {
     timeline
       .add(introAnimation(wordGroupRef))
       .add(progressAnimation(progressRef, progressNumberRef), 0) // 0 is the position of the animation in the timeline. So it starts when the prev. .add begins, but the next .add happens after.
-      .add(collapseWords(loaderRef), "-=1"); // 1 second before the previous animation ends.
+      // .add(collapseWords(loaderRef), "-=1"); // 1 second before the previous animation ends.
   }, [timeline]);
 
   return (
